@@ -23,7 +23,7 @@ class JwtGuard implements Guard
             return $this->user;
         }
 
-        if ($this->jwt->setRequest($this->request)->getToken()) {
+        if ($this->jwt->setRequest($this->request)->getToken() && $this->jwt->check()) {
             $id = $this->jwt->payload()->get('sub');
 
             $this->user = new User();

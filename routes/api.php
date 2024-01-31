@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:jwt')->group(function (){
-    Route::get('test' ,function (){
-        dd(auth()->user());
-    });
+    Route::get('get-file', [FileController::class, 'getFile']);
+
+    Route::post('set-file', [FileController::class, 'storeFile']);
+    Route::post('set-file-base64', [FileController::class, 'storeFileBase64']);
 });
