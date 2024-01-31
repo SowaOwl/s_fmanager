@@ -9,7 +9,12 @@ use Exception;
 
 class DocumentRepository
 {
-    public function setDocument(User $user, array $data)
+    /**
+     * @param User $user
+     * @param array $data
+     * @return array
+     */
+    public function setDocument(User $user, array $data): array
     {
         try {
             $document = (new DocumentEntity($user, $data))->toArray();
